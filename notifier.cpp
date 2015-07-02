@@ -58,16 +58,16 @@ void Notifier::notificationPushedIntf(const QString &convId)
 
 void Notifier::closeAllNotifications()
 {
-    qDebug() << "Deleting notif";
-    qDebug() << activeNotifications.size();
-    foreach (Notification *n, activeNotifications) {
-        n->close();
-        qDebug() << "Deleting notif 2";
-        activeNotifications.removeOne(n);
-        qDebug() << "Deleting notif 3";
-        delete n;
-    }
-    emit deletedNotifications();
+//    qDebug() << "Deleting notif";
+//    qDebug() << activeNotifications.size();
+//    foreach (Notification *n, activeNotifications) {
+//        n->close();
+//        qDebug() << "Deleting notif 2";
+//        activeNotifications.removeOne(n);
+//        qDebug() << "Deleting notif 3";
+//        delete n;
+//    }
+//    emit deletedNotifications();
 }
 
 void Notifier::showNotification(QString preview, QString summary, QString body, QString sender, int num, QString convId)
@@ -77,38 +77,38 @@ void Notifier::showNotification(QString preview, QString summary, QString body, 
         return;
     qDebug() << "shn called";
     //Check notification aspect
-    Notification *n = new Notification(myParent);
+//    Notification *n = new Notification(myParent);
 
-    /*
-     * Temporarily disabled; how does it work exactly?
-    if (lastId > 0)
-        n->setReplacesId(lastId);
-    */
-    n->setCategory("im.received");
-    n->setHintValue("x-nemo-feedback", "chat");
-    n->setHintValue("x-nemo-priority", 100);
-    n->setHintValue("x-nemo-preview-icon", "icon-s-status-chat");
-    n->setHintValue("lowPowerModeIconId", "icon-m-low-power-mode-chat");
-    n->setHintValue("statusAreaIconId", "icon-s-status-notifier-chat");
-    n->setItemCount(1);
-    n->setBody(body);
-    n->setPreviewBody(preview);
+//    /*
+//     * Temporarily disabled; how does it work exactly?
+//    if (lastId > 0)
+//        n->setReplacesId(lastId);
+//    */
+//    n->setCategory("im.received");
+//    n->setHintValue("x-nemo-feedback", "chat");
+//    n->setHintValue("x-nemo-priority", 100);
+//    n->setHintValue("x-nemo-preview-icon", "icon-s-status-chat");
+//    n->setHintValue("lowPowerModeIconId", "icon-m-low-power-mode-chat");
+//    n->setHintValue("statusAreaIconId", "icon-s-status-notifier-chat");
+//    n->setItemCount(1);
+//    n->setBody(body);
+//    n->setPreviewBody(preview);
 
-    n->setSummary(cModel->getContactDName(sender));
+//    n->setSummary(cModel->getContactDName(sender));
 
-    n->setTimestamp(QDateTime::currentDateTime());
+//    n->setTimestamp(QDateTime::currentDateTime());
 
-    n->setRemoteDBusCallServiceName("harbour.hangish");
-    n->setRemoteDBusCallObjectPath("/");
-    n->setRemoteDBusCallInterface("harbour.hangish");
-    n->setRemoteDBusCallMethodName("notificationPushedIntf");
-    n->setRemoteDBusCallArguments(QVariantList() << convId);
-    emit showNotificationForCover(num);
+//    n->setRemoteDBusCallServiceName("harbour.hangish");
+//    n->setRemoteDBusCallObjectPath("/");
+//    n->setRemoteDBusCallInterface("harbour.hangish");
+//    n->setRemoteDBusCallMethodName("notificationPushedIntf");
+//    n->setRemoteDBusCallArguments(QVariantList() << convId);
+//    emit showNotificationForCover(num);
 
-    n->publish();
-    lastId = n->replacesId();
-    qDebug() << "pubbed " << n->replacesId();
-    activeNotifications.append(n);
+//    n->publish();
+//    lastId = n->replacesId();
+//    qDebug() << "pubbed " << n->replacesId();
+//    activeNotifications.append(n);
 }
 
 void Notifier::activeClientUpdate(int state)

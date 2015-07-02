@@ -23,7 +23,7 @@ along with Nome-Programma.  If not, see <http://www.gnu.org/licenses/>
 
 #include <QtCore/QScopedPointer>
 
-#include <sailfishapp.h>
+//#include <sailfishapp.h>
 #include <client.h>
 #include "conversationmodel.h"
 #include "rostermodel.h"
@@ -37,8 +37,11 @@ int main(int argc, char *argv[])
     QCoreApplication::setApplicationName("Hangish");
     QCoreApplication::setApplicationVersion("0.4.0");
 
-    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
-    QScopedPointer<QQuickView> view(SailfishApp::createView());
+//    QScopedPointer<QGuiApplication> app(SailfishApp::application(argc, argv));
+//    QScopedPointer<QQuickView> view(SailfishApp::createView());
+    QGuiApplication *app = new QGuiApplication(argc, argv);
+    QQuickView *view = new QQuickView();
+
     ConversationModel *conversationModel = new ConversationModel();
     RosterModel *rosterModel = new RosterModel();
     ContactsModel *contactsModel = new ContactsModel();
@@ -72,8 +75,10 @@ int main(int argc, char *argv[])
                           SLOT(connectivityChanged(QString,QDBusVariant))
                           );
 
-    view->setSource(SailfishApp::pathTo("qml/harbour-hangish.qml"));
-    view->showFullScreen();
+    //view->setSource(SailfishApp::pathTo("qml/harbour-hangish.qml"));
+    view->setSource(QUrl("qrc:///qml/ubuntu/ubuntu-hangish.qml"));
+//    view->showFullScreen();
+    view->show();
     app->exec();
 }
 

@@ -10,8 +10,8 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-QT += dbus
-include(notifications.pri)
+QT += dbus network quick qml
+#include(notifications.pri)
 #include(keepalive.pri)
 
 TARGET = harbour-hangish
@@ -75,4 +75,5 @@ HEADERS += \
     oauth2auth.h
 
 RESOURCES += \
-    harbour-hangish.qrc
+    harbour-hangish.qrc \
+    ubuntu-hangish.qrc

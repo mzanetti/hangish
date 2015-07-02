@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/ubuntu/ubuntu-hangish.qml</file>
+        <file>qml/ubuntu/pages/About.qml</file>
+        <file>qml/ubuntu/pages/Conversation.qml</file>
+        <file>qml/ubuntu/pages/FirstPage.qml</file>
+        <file>qml/ubuntu/pages/FullscreenImage.qml</file>
+        <file>qml/ubuntu/pages/ImagePicker.qml</file>
+        <file>qml/ubuntu/pages/InfoBanner.qml</file>
+        <file>qml/ubuntu/pages/Roster.qml</file>
+        <file>qml/ubuntu/delegates/Message.qml</file>
+        <file>qml/ubuntu/delegates/RosterDelegate.qml</file>
+    </qresource>
+</RCC>

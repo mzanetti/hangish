@@ -22,11 +22,13 @@ along with Nome-Programma.  If not, see <http://www.gnu.org/licenses/>
 
 
 import QtQuick 2.0
-import Sailfish.Silica 1.0
+import Ubuntu.Components 1.2
+import Ubuntu.Web 0.2
 
 
 Page {
     id: page
+    title: "Hangish login"
 
     Connections
     {
@@ -36,7 +38,6 @@ Page {
             pageStack.push(Qt.resolvedUrl("Roster.qml"))
         }
         onLoginNeeded: {
-            print("Login needed")
             infotext.visible = false
             loginIndicator.visible = false
             wv.visible = true
@@ -45,7 +46,6 @@ Page {
         }
 
         onAuthFailed: {
-            print("Auth failed")
             loginIndicator.running = false
             infotext.text = error
             resultLabel.text = qsTr("Login Failed ") + error
@@ -59,7 +59,7 @@ Page {
     Column {
         width: parent.width
         height: parent.height
-        spacing: Theme.paddingLarge
+        spacing: units.gu(1)
 
         Item {
             // Spacer
@@ -67,22 +67,17 @@ Page {
             width: 1
         }
 
-        BusyIndicator {
+        ActivityIndicator {
             id: loginIndicator
             running: true
             anchors.horizontalCenter: parent.horizontalCenter
-            size: BusyIndicatorSize.Large
         }
 
         Label {
             id: infotext
             text: qsTr("Logging in")
             width: parent.width
-            font {
-                pixelSize: Theme.fontSizeLarge
-                family: Theme.fontFamilyHeading
-            }
-            color: Theme.highlightColor
+            fontSize: "large"
             horizontalAlignment: Text.AlignHCenter
         }
 
@@ -100,13 +95,9 @@ Page {
         }
     }
 
-    SilicaWebView {
+    WebView {
         id: wv
         visible: false
-        header: Label {
-            text: "Hangish login"
-        }
-        width: parent.width
         anchors.fill: parent
         onTitleChanged: {
             console.log(wv.url)
@@ -120,9 +111,7 @@ Page {
                 Client.sendAuthCode(wv.title.substring(wv.title.indexOf("Success code=")+13))
             }
         }
-
     }
-
 }
 
 

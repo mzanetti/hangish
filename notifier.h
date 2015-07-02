@@ -26,7 +26,7 @@ along with Nome-Programma.  If not, see <http://www.gnu.org/licenses/>
 
 #include <QObject>
 #include "contactsmodel.h"
-#include "notification.h"
+//#include "notification.h"
 
 class Notifier : public QObject
 {
@@ -35,7 +35,7 @@ public:
     Notifier(QObject *parent, ContactsModel *contacts);
 
 private:
-    QList<Notification *> activeNotifications;
+    //QList<Notification *> activeNotifications;
     int activeClientState;
     ContactsModel *cModel;
     QObject *myParent;
